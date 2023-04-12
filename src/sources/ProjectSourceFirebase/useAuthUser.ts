@@ -39,7 +39,11 @@ export function useAuthUser() {
         if (user) {
           // Get user roles
           const tokenResult = await getIdTokenResult(user);
-          const roles = (tokenResult.claims.roles as string[]) ?? [];
+          const roles = [];
+          if (tokenResult.claims?.admin) roles.push("ADMIN");
+          if (tokenResult.claims?.dev) roles.push("DEV");
+          if (tokenResult.claims?.invoices) roles.push("INVOICES");
+          if (tokenResult.claims?.supervisor) roles.push("SUPERVISOR");
           setUserRoles(roles);
 
           // Update user settings doc with roles for User Management page

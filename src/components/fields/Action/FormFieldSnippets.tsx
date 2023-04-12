@@ -42,7 +42,7 @@ const FORM_FIELD_SNIPPETS = [
       name: "roles",
       label: "Roles",
       required: true,
-      options: ["ADMIN", "EDITOR", "VIEWER"],
+      options: ["ADMIN", "DEV", "SUPERVISOR", "INVOICES"],
     },
   },
   {

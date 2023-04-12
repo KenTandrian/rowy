@@ -114,7 +114,7 @@ export const projectRolesAtom = atom((get) =>
     new Set(
       get(tablesAtom).reduce(
         (a, c) => [...a, ...c.roles],
-        ["ADMIN", "EDITOR", "VIEWER"]
+        ["ADMIN", "DEV", "SUPERVISOR", "INVOICES"]
       )
     )
   )
