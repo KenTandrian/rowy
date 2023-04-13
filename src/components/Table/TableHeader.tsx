@@ -47,7 +47,11 @@ export const TableHeader = memo(function TableHeader({
   return (
     <DragDropContext onDragEnd={handleDropColumn}>
       {headerGroups.map((headerGroup) => (
-        <Droppable droppableId="droppable-column" direction="horizontal">
+        <Droppable
+          droppableId="droppable-column"
+          direction="horizontal"
+          key={headerGroup.id}
+        >
           {(provided) => (
             <StyledRow
               key={headerGroup.id}
