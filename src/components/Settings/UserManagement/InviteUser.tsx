@@ -25,6 +25,9 @@ import {
 import { ROUTES } from "@src/constants/routes";
 import { runRoutes } from "@src/constants/runRoutes";
 
+const host = window.location.host;
+const isSelfHosted = !host.includes("rowy.app") && !host.includes("localhost");
+
 export default function InviteUser() {
   const [projectRoles] = useAtom(projectRolesAtom, projectScope);
   const [projectSettings] = useAtom(projectSettingsAtom, projectScope);
@@ -138,14 +141,16 @@ export default function InviteUser() {
                 textAlign="center"
                 sx={{ m: 1, mb: -1 }}
               >
-                {status}
+                {isSelfHosted
+                  ? "Self-hosted Rowy instances cannot invite users."
+                  : status}
               </Typography>
             )
           }
           actions={{
             primary: {
               children: "Invite",
-              disabled: !email || roles.length === 0,
+              disabled: !email || roles.length === 0 || isSelfHosted,
               loading: status === "LOADING",
               type: "submit",
               onClick: handleInvite,
