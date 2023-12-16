@@ -128,4 +128,13 @@ type PushNotificationRequest = {
 type PushNotificationBody = (
   context: ExtensionContext
 ) => Message | Message[] | Promise<Message | Message[]>;
+
 type TaskBody = (context: ExtensionContext) => Promise<any>;
+
+type BuildshipTriggerBody = (context: ExtensionContext) => Promise<{
+  buildshipConfig: {
+    projectId: string;
+    workflowId: string;
+  };
+  body: string;
+}>;
