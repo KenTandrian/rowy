@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist",
+    "site": "rowy-stocklio-playground",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
